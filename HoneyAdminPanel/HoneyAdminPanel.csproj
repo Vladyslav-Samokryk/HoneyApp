@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="DocX" Version="1.8.0" />
+    <PackageReference Include="Microsoft.ML" Version="1.6.0" />
+    <PackageReference Include="Microsoft.ML.FastTree" Version="1.6.0" />
+    <PackageReference Include="Microsoft.ML.LightGbm" Version="1.6.0" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HoneyDataBace\HoneyDataBace.csproj" />
+  </ItemGroup>
+  <ItemGroup Label="HoneyModel">
+    <None Include="HoneyModel.consumption.cs">
+      <DependentUpon>HoneyModel.mbconfig</DependentUpon>
+    </None>
+    <None Include="HoneyModel.training.cs">
+      <DependentUpon>HoneyModel.mbconfig</DependentUpon>
+    </None>
+    <None Include="HoneyModel.zip">
+      <DependentUpon>HoneyModel.mbconfig</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

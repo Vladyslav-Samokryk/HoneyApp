@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  honeyapp:
+    image: ${DOCKER_REGISTRY-}honeyapp
+    build:
+      context: .
+      dockerfile: HoneyApp/Dockerfile
+  db:
+    image: mcr.microsoft.com/mssql/server
+    #restart: always
+    container_name: development_database
+    ports:
+        - 5505:1433 
+    environment:
+        SA_PASSWORD: N@turenature12345
+        ACCEPT_EULA: Y
+        MSSQL_TCP_PORT: 1433
+        #USER: sa
+    volumes: 
+          - mf_sqlsystem:/var/opt/mssql/
+          - mf_sqldata:/var/opt/sqlserver/data
+          - mf_sqllog:/var/opt/sqlserver/log
+          - mf_sqlbackup:/var/opt/sqlserver/backup
+        
+volumes:
+  mf_sqlsystem:
+  mf_sqldata:
+  mf_sqllog:
+  mf_sqlbackup:
